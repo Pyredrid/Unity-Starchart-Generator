@@ -120,6 +120,7 @@ public class StarChart : MonoBehaviour {
 		Vector3 direction = rotation * Vector3.forward;
 		Ray ray = new Ray(position, direction);
 
+#if UNITY_EDITOR
 		GameObject starGO = (GameObject)UnityEditor.PrefabUtility.InstantiatePrefab(starPrefab);
 		starGO.transform.SetParent(transform);
 		starGO.transform.localPosition = ray.GetPoint(starPlacementDistance);
@@ -129,5 +130,6 @@ public class StarChart : MonoBehaviour {
 		starGO.name = star.name;
 		float scalefactor = 1.0f / star.ma;
 		starGO.transform.localScale *= scalefactor;
+#endif
 	}
 }
